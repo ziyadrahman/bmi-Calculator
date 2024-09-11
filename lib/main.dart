@@ -1,5 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_flutter_learning/Components/ReusableCard.dart';
+import 'package:flutter/widgets.dart';
+import 'package:bmi_calculator_flutter_learning/Styles/color.dart';
+
+const bottomContainerHeight = 80.0;
+// const bottomContainerColor = Color(0xFFeb1555);
 
 void main() {
   runApp(const MyApp());
@@ -48,8 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Container(
-          margin: const EdgeInsets.all(10.0),
-          child: const Column(
+          child: Column(
             children: <Widget>[
               Expanded(
                   child: Row(
@@ -86,6 +91,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ))
                 ],
               )),
+              Container(
+                color: bottomContainerColor,
+                margin: const EdgeInsets.only(top: 10.0),
+                height: bottomContainerHeight,
+                width: double.infinity,
+              )
             ],
           ),
         ));
