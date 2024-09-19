@@ -1,8 +1,10 @@
+import 'package:bmi_calculator_flutter_learning/Components/IconContent.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_flutter_learning/Components/ReusableCard.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bmi_calculator_flutter_learning/Styles/color.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 const bottomContainerHeight = 80.0;
 // const bottomContainerColor = Color(0xFFeb1555);
@@ -53,52 +55,83 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: AppBar(
           title: Text(widget.title),
         ),
-        body: Container(
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                  child: Row(
-                children: <Widget>[
-                  Expanded(
-                      child: ReusableCard(
-                    color: Color(0xFF1D1E33),
+        body: Column(
+          children: <Widget>[
+            const Expanded(
+                child: Row(
+              children: <Widget>[
+                Expanded(
+                    child: ReusableCard(
+                  color: reusableCardColor,
+                  key: null,
+                  cardChild: IconContent(
                     key: null,
-                  )),
-                  Expanded(
-                      child: ReusableCard(
-                    color: Color(0xFF1D1E33),
+                    icon: FontAwesomeIcons.mars,
+                    label: 'MALE',
+                  ),
+                )),
+                Expanded(
+                    child: ReusableCard(
+                  color: reusableCardColor,
+                  key: null,
+                  cardChild: IconContent(
                     key: null,
-                  ))
-                ],
-              )),
-              Expanded(
-                  child: ReusableCard(
-                color: Color(0xFF1D1E33),
+                    icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
+                  ),
+                )),
+              ],
+            )),
+            const Expanded(
+              child: ReusableCard(
+                color: reusableCardColor,
                 key: null,
-              )),
-              Expanded(
-                  child: Row(
-                children: <Widget>[
-                  Expanded(
-                      child: ReusableCard(
-                    color: Color(0xFF1D1E33),
+                cardChild: IconContent(
+                  key: null,
+                  icon: FontAwesomeIcons.venus,
+                  label: 'FEMALE',
+                ),
+              ),
+            ),
+            const Expanded(
+                child: Row(
+              children: <Widget>[
+                Expanded(
+                    child: ReusableCard(
+                  color: reusableCardColor,
+                  key: null,
+                  cardChild: IconContent(
                     key: null,
-                  )),
-                  Expanded(
-                      child: ReusableCard(
-                    color: Color(0xFF1D1E33),
+                    icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
+                  ),
+                )),
+                Expanded(
+                    child: ReusableCard(
+                  color: reusableCardColor,
+                  key: null,
+                  cardChild: IconContent(
                     key: null,
-                  ))
-                ],
-              )),
-              Container(
+                    icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
+                  ),
+                )),
+              ],
+            )),
+            Container(
                 color: bottomContainerColor,
                 margin: const EdgeInsets.only(top: 10.0),
                 height: bottomContainerHeight,
                 width: double.infinity,
-              )
-            ],
-          ),
+                child: const TextButton(
+                    onPressed: null,
+                    child: Text(
+                      'CALCULATE YOUR BMI',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    )))
+          ],
         ));
   }
 }
