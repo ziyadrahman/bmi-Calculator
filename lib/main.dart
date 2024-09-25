@@ -74,43 +74,33 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Row(
               children: <Widget>[
                 Expanded(
-                    child: GestureDetector(
-                  onTap: () {
-                    Common.printInLog(pageName, "GestureDetector", "onTap");
-                    setState(() {
-                      selectedGender = Gender.male;
-                    });
-                  },
-                  child: ReusableCard(
-                    color: selectedGender == Gender.male
-                        ? activeCardColor
-                        : inActiveCardColor,
+                    child: ReusableCard(
+                  onPress: () => setState(() {
+                    selectedGender = Gender.male;
+                  }),
+                  color: selectedGender == Gender.male
+                      ? activeCardColor
+                      : inActiveCardColor,
+                  key: null,
+                  cardChild: const IconContent(
                     key: null,
-                    cardChild: const IconContent(
-                      key: null,
-                      icon: FontAwesomeIcons.mars,
-                      label: 'MALE',
-                    ),
+                    icon: FontAwesomeIcons.mars,
+                    label: 'MALE',
                   ),
                 )),
                 Expanded(
-                    child: GestureDetector(
-                  onTap: () {
-                    Common.printInLog(pageName, "GestureDetector", "onTap");
-                    setState(() {
-                      selectedGender = Gender.female;
-                    });
-                  },
-                  child: ReusableCard(
-                    color: selectedGender == Gender.female
-                        ? activeCardColor
-                        : inActiveCardColor,
+                    child: ReusableCard(
+                  onPress: () => setState(() {
+                    selectedGender = Gender.female;
+                  }),
+                  color: selectedGender == Gender.female
+                      ? activeCardColor
+                      : inActiveCardColor,
+                  key: null,
+                  cardChild: IconContent(
                     key: null,
-                    cardChild: IconContent(
-                      key: null,
-                      icon: FontAwesomeIcons.venus,
-                      label: 'FEMALE',
-                    ),
+                    icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
                   ),
                 )),
               ],
