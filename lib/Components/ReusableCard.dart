@@ -4,12 +4,12 @@ class ReusableCard extends StatelessWidget {
   const ReusableCard({
     super.key,
     required this.color,
-    required this.cardChild,
+    this.cardChild,
     this.onPress,
   });
 
   final Color color;
-  final Widget cardChild;
+  final Widget? cardChild;
   final VoidCallback? onPress;
   final String pageName = 'ReusableCard';
 

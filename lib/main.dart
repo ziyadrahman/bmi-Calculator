@@ -106,46 +106,23 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             )),
             Expanded(
-              child: GestureDetector(
-                onTap: () {
-                  Common.printInLog(pageName, "GestureDetector", "onTap");
-                  setState(() {
-                    selectedGender = Gender.female;
-                  });
-                },
-                child: ReusableCard(
-                  color: inActiveCardColor,
-                  key: null,
-                  cardChild: const IconContent(
-                    key: null,
-                    icon: FontAwesomeIcons.venus,
-                    label: 'FEMALE',
-                  ),
-                ),
+              child: ReusableCard(
+                color: inActiveCardColor,
+                key: null,
               ),
             ),
-            Expanded(
+            const Expanded(
                 child: Row(
               children: <Widget>[
                 Expanded(
                     child: ReusableCard(
                   color: reusableCardColor,
                   key: null,
-                  cardChild: IconContent(
-                    key: null,
-                    icon: FontAwesomeIcons.venus,
-                    label: 'FEMALE',
-                  ),
                 )),
                 Expanded(
                     child: ReusableCard(
                   color: reusableCardColor,
                   key: null,
-                  cardChild: IconContent(
-                    key: null,
-                    icon: FontAwesomeIcons.venus,
-                    label: 'FEMALE',
-                  ),
                 )),
               ],
             )),
