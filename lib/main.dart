@@ -5,9 +5,15 @@ import 'package:bmi_calculator_flutter_learning/Components/ReusableCard.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bmi_calculator_flutter_learning/Styles/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'common.dart';
 
 const bottomContainerHeight = 80.0;
+
 // const bottomContainerColor = Color(0xFFeb1555);
+enum Gender {
+  male,
+  female,
+}
 
 void main() {
   runApp(const MyApp());
@@ -49,6 +55,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  String pageName = 'main';
+
+  Color activeCardColor = const Color(0xFF323359);
+  Color inActiveCardColor = const Color(0xFF1D1E33);
+
+  Gender? selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,43 +70,71 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Column(
           children: <Widget>[
-            const Expanded(
+            Expanded(
                 child: Row(
               children: <Widget>[
                 Expanded(
-                    child: ReusableCard(
-                  color: reusableCardColor,
-                  key: null,
-                  cardChild: IconContent(
+                    child: GestureDetector(
+                  onTap: () {
+                    Common.printInLog(pageName, "GestureDetector", "onTap");
+                    setState(() {
+                      selectedGender = Gender.male;
+                    });
+                  },
+                  child: ReusableCard(
+                    color: selectedGender == Gender.male
+                        ? activeCardColor
+                        : inActiveCardColor,
                     key: null,
-                    icon: FontAwesomeIcons.mars,
-                    label: 'MALE',
+                    cardChild: const IconContent(
+                      key: null,
+                      icon: FontAwesomeIcons.mars,
+                      label: 'MALE',
+                    ),
                   ),
                 )),
                 Expanded(
-                    child: ReusableCard(
-                  color: reusableCardColor,
-                  key: null,
-                  cardChild: IconContent(
+                    child: GestureDetector(
+                  onTap: () {
+                    Common.printInLog(pageName, "GestureDetector", "onTap");
+                    setState(() {
+                      selectedGender = Gender.female;
+                    });
+                  },
+                  child: ReusableCard(
+                    color: selectedGender == Gender.female
+                        ? activeCardColor
+                        : inActiveCardColor,
                     key: null,
-                    icon: FontAwesomeIcons.venus,
-                    label: 'FEMALE',
+                    cardChild: IconContent(
+                      key: null,
+                      icon: FontAwesomeIcons.venus,
+                      label: 'FEMALE',
+                    ),
                   ),
                 )),
               ],
             )),
-            const Expanded(
-              child: ReusableCard(
-                color: reusableCardColor,
-                key: null,
-                cardChild: IconContent(
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  Common.printInLog(pageName, "GestureDetector", "onTap");
+                  setState(() {
+                    selectedGender = Gender.female;
+                  });
+                },
+                child: ReusableCard(
+                  color: inActiveCardColor,
                   key: null,
-                  icon: FontAwesomeIcons.venus,
-                  label: 'FEMALE',
+                  cardChild: const IconContent(
+                    key: null,
+                    icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
+                  ),
                 ),
               ),
             ),
-            const Expanded(
+            Expanded(
                 child: Row(
               children: <Widget>[
                 Expanded(
