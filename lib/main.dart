@@ -97,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ? activeCardColor
                       : inActiveCardColor,
                   key: null,
-                  cardChild: IconContent(
+                  cardChild: const IconContent(
                     key: null,
                     icon: FontAwesomeIcons.venus,
                     label: 'FEMALE',
@@ -116,18 +116,18 @@ class _MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 Expanded(
                     child: ReusableCard(
-                  color: reusableCardColor,
+                  color: kReusableCardColor,
                   key: null,
                 )),
                 Expanded(
                     child: ReusableCard(
-                  color: reusableCardColor,
+                  color: kReusableCardColor,
                   key: null,
                 )),
               ],
             )),
             Container(
-                color: bottomContainerColor,
+                color: kBottomContainerColor,
                 margin: const EdgeInsets.only(top: 10.0),
                 height: bottomContainerHeight,
                 width: double.infinity,
