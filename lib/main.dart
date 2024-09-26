@@ -1,4 +1,5 @@
 import 'package:bmi_calculator_flutter_learning/Components/IconContent.dart';
+import 'package:bmi_calculator_flutter_learning/Styles/Constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator_flutter_learning/Components/ReusableCard.dart';
@@ -61,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Color inActiveCardColor = const Color(0xFF1D1E33);
 
   Gender? selectedGender;
+  late int height = 80;
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
                 child: Row(
@@ -109,6 +112,41 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ReusableCard(
                 color: inActiveCardColor,
                 key: null,
+                cardChild: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Height',
+                      style: kLabelTextStyle,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          height.toString(),
+                          style: kNumberTextStyle,
+                        ),
+                        Text(
+                          'cm',
+                          style: kLabelTextStyle,
+                        ),
+                      ],
+                    ),
+                    Slider(
+                        value: height.toDouble(),
+                        min: 10,
+                        max: 100,
+                        activeColor: Colors.white,
+                        thumbColor: Colors.pink,
+                        onChanged: (double newValue) {
+                          setState(() {
+                            height = newValue.toInt();
+                            print("height  $newValue");
+                          });
+                        })
+                  ],
+                ),
               ),
             ),
             const Expanded(
