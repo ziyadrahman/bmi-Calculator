@@ -122,6 +122,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
                           height.toString(),
@@ -137,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         value: height.toDouble(),
                         min: 10,
                         max: 100,
-                        activeColor: Colors.white,
+                        activeColor: Colors.pinkAccent,
                         thumbColor: Colors.pink,
                         onChanged: (double newValue) {
                           setState(() {
