@@ -135,18 +135,28 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ],
                     ),
-                    Slider(
-                        value: height.toDouble(),
-                        min: 10,
-                        max: 100,
-                        activeColor: Colors.pinkAccent,
-                        thumbColor: Colors.pink,
-                        onChanged: (double newValue) {
-                          setState(() {
-                            height = newValue.toInt();
-                            print("height  $newValue");
-                          });
-                        })
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 16.0),
+                        overlayShape:
+                            const RoundSliderOverlayShape(overlayRadius: 30.0),
+                        activeTrackColor: Colors.white,
+                        inactiveTrackColor: Colors.grey,
+                        thumbColor: const Color(0xFFEB1555),
+                        overlayColor: const Color(0x15EB1555),
+                      ),
+                      child: Slider(
+                          value: height.toDouble(),
+                          min: 10,
+                          max: 100,
+                          onChanged: (double newValue) {
+                            setState(() {
+                              height = newValue.toInt();
+                              print("height  $newValue");
+                            });
+                          }),
+                    )
                   ],
                 ),
               ),
