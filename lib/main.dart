@@ -6,6 +6,8 @@ import 'package:bmi_calculator_flutter_learning/Components/ReusableCard.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bmi_calculator_flutter_learning/Styles/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:bmi_calculator_flutter_learning/Components/RoundedIconButton.dart'; // Import the new widget
+
 import 'common.dart';
 
 const bottomContainerHeight = 80.0;
@@ -62,7 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Color inActiveCardColor = const Color(0xFF1D1E33);
 
   Gender? selectedGender;
-  late int height = 80;
+  late int height = 10;
+  int weight = 0;
+  int age = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -161,19 +165,85 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            const Expanded(
+            Expanded(
                 child: Row(
               children: <Widget>[
                 Expanded(
-                    child: ReusableCard(
-                  color: kReusableCardColor,
-                  key: null,
-                )),
+                  child: ReusableCard(
+                    color: kReusableCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Weight', style: kLabelTextStyle),
+                        Text(weight.toString(), style: kNumberTextStyle),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // Use RoundedIconButton for Decreasing Weight
+                            RoundedIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  if (weight != 0) {
+                                    weight--;
+                                  }
+                                });
+                              },
+                            ),
+                            const SizedBox(width: 10.0),
+                            // Use RoundedIconButton for Increasing Weight
+                            RoundedIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Expanded(
-                    child: ReusableCard(
-                  color: kReusableCardColor,
-                  key: null,
-                )),
+                  child: ReusableCard(
+                    color: kReusableCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('Age', style: kLabelTextStyle),
+                        Text(age.toString(), style: kNumberTextStyle),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // Use RoundedIconButton for Decreasing Weight
+                            RoundedIconButton(
+                              icon: FontAwesomeIcons.minus,
+                              onPressed: () {
+                                setState(() {
+                                  if (age != 0) {
+                                    age--;
+                                  }
+                                });
+                              },
+                            ),
+                            const SizedBox(width: 10.0),
+                            // Use RoundedIconButton for Increasing Weight
+                            RoundedIconButton(
+                              icon: FontAwesomeIcons.plus,
+                              onPressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             )),
             Container(
