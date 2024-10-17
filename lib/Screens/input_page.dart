@@ -1,4 +1,5 @@
 import 'package:bmi_calculator_flutter_learning/Components/IconContent.dart';
+import 'package:bmi_calculator_flutter_learning/Screens/result_page.dart';
 import 'package:bmi_calculator_flutter_learning/Styles/Constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,11 +7,10 @@ import 'package:bmi_calculator_flutter_learning/Components/ReusableCard.dart';
 import 'package:flutter/widgets.dart';
 import 'package:bmi_calculator_flutter_learning/Styles/color.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:bmi_calculator_flutter_learning/Components/RoundedIconButton.dart'; // Import the new widget
+import 'package:bmi_calculator_flutter_learning/Components/RoundedIconButton.dart';
+import 'package:bmi_calculator_flutter_learning/Components/bottom_button.dart'; // Import the new widget
 
 import 'package:bmi_calculator_flutter_learning/common.dart';
-
-const bottomContainerHeight = 80.0;
 
 // const bottomContainerColor = Color(0xFFeb1555);
 enum Gender {
@@ -244,19 +244,22 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             )),
-            Container(
-                color: kBottomContainerColor,
-                margin: const EdgeInsets.only(top: 10.0),
-                height: bottomContainerHeight,
-                width: double.infinity,
-                child: const TextButton(
-                    onPressed: null,
-                    child: Text(
-                      'CALCULATE YOUR BMI',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    )))
+            BottomButton(
+              buttonTitle: 'CALCULATE YOUR BMI',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ResultPage(
+                      bmiResult: '22.1', // Example BMI result
+                      resultText: 'Normal', // Example result category
+                      interpretation:
+                          'You have a normal body weight. Good job!', // Example feedback
+                    ),
+                  ),
+                );
+              },
+            )
           ],
         ));
   }
